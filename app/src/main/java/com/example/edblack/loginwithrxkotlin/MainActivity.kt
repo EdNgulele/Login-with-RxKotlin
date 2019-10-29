@@ -1,6 +1,6 @@
 package com.example.edblack.loginwithrxkotlin
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import com.jakewharton.rxbinding2.widget.RxTextView
@@ -43,8 +43,6 @@ class MainActivity : AppCompatActivity() {
                     wrapper_password.error = it.message
                 })
                 .subscribe()
-
-
     }
 
     private val verifyPasswordLength = ObservableTransformer<String, String> { observable ->
@@ -72,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                     .singleOrError()
                     .onErrorResumeNext {
                         if (it is NoSuchElementException) {
-                            Single.error(Exception("Invalid email format")) //informing the usher
+                            Single.error(Exception("Invalid email format")) //informing the user
                         } else {
                             Single.error(it)
                         }
